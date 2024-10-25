@@ -12,7 +12,7 @@ app.listen(port, () => {
 
 app.use((err, req, res, next) => { //Error handling to catch any server errors
     console.error(err.stack);
-    res.status(500).send('Something went wrong!'); 
+    res.status(500).send('Something went wrong!');
 });
 
 app.get('/hello/:name', (req, res) => { //Routing with a URL parameter
@@ -50,7 +50,7 @@ app.get('/api/movies', (req, res) => {
             "Poster": "https://example.com/poster3.jpg"
         }
     ];
-    res.status(200).json({ myMovies:movies }); //Modifying the route handler to return the movies as a JSON response
+    res.status(200).json({ myMovies: movies }); //Modifying the route handler to return the movies as a JSON response
 });
 
 const path = require('path'); // path module to serve the file
@@ -61,7 +61,7 @@ app.get('/index', (req, res) => {
 
 app.use(express.static('public')); // Middleware to serve all static files (CSS, JS, etc.) from a public directory.
 
-app.get('/name', (req, res) => { // Handling the GET request for /name:
+app.get('/name', (req, res) => { // Handling the GET request for /name. Primary purpose is to link middleware to your application, facilitating the handling of GET requests at the specified route.
     const firstname = req.query.firstname;
     const lastname = req.query.lastname;
     res.send(`Hello ${firstname} ${lastname}`); //Sends a response to the server
@@ -70,7 +70,7 @@ app.get('/name', (req, res) => { // Handling the GET request for /name:
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true })); //Config line to parse the data
 
-app.post('/name', (req, res) => { // Handling the POST request for /name:
+app.post('/name', (req, res) => { // Handling the POST request for /name, typically used for submitting forms or sending data to a server from clients.
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     res.send(`Hello ${firstname} ${lastname}`);
