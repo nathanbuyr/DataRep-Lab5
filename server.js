@@ -64,5 +64,14 @@ app.use(express.static('public')); // Middleware to serve all static files (CSS,
 app.get('/name', (req, res) => { // Handling the GET request for /name:
     const firstname = req.query.firstname;
     const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`); //Sends a response to the server
+});
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true })); //Config line to parse the data
+
+app.post('/name', (req, res) => { // Handling the POST request for /name:
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
     res.send(`Hello ${firstname} ${lastname}`);
 });
