@@ -60,3 +60,9 @@ app.get('/index', (req, res) => {
 });
 
 app.use(express.static('public')); // Middleware to serve all static files (CSS, JS, etc.) from a public directory.
+
+app.get('/name', (req, res) => { // Handling the GET request for /name:
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
