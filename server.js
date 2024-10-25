@@ -52,3 +52,11 @@ app.get('/api/movies', (req, res) => {
     ];
     res.status(200).json({ myMovies:movies }); //Modifying the route handler to return the movies as a JSON response
 });
+
+const path = require('path'); // path module to serve the file
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.use(express.static('public')); // Middleware to serve all static files (CSS, JS, etc.) from a public directory.
